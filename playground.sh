@@ -17,6 +17,9 @@
 # specific language governing permissions and limitations
 # under the License.
 #
+
+set -x
+
 playground_dir="$(dirname "${BASH_SOURCE-$0}")"
 playground_dir="$(
   cd "${playground_dir}" >/dev/null
@@ -64,7 +67,7 @@ start() {
   testDocker
   checkCompose
 
-  ports=(8090 9001 3307 19000 19083 60070 13306 15342 18080 18888)
+  ports=(8090 9001 3307 19000 19083 60070 13306 15342 18080 18888 19090 13000)
   for port in "${ports[@]}"; do
     checkPortInUse ${port}
   done
@@ -82,7 +85,7 @@ start() {
 }
 
 status() {
-  docker-compose ps
+  docker-compose ps -a
 }
 
 stop() {
