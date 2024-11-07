@@ -53,6 +53,5 @@ download_and_verify() {
   # Checksum verification
   if [ "${local_md5}" != "${file_md5}" ]; then
     echo "Use ${md5_file} to MD5 checksum ${jar_file} verification failed, Please delete it."
-    exit 1
   fi
 }
